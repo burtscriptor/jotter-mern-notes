@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getNotes, addNotes } from '../../utilities/note-services';
 
-const HomePage = () => {
+const HomePage = ({ user }) => {
     const [userNotes, setUserNotes] = useState({
+        user: user,
         addNote: "",
         noteCollection: [],
         edit: ""
@@ -32,7 +33,8 @@ const HomePage = () => {
         try {
             event.preventDefault();
             const data = userNotes.addNote;
-            const add = await addNotes(data);
+            const creator = userNotes.user;
+            const add = await addNotes(data, creator );
             console.log(add);
             
         }catch (error) {

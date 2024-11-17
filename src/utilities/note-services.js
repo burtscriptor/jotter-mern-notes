@@ -1,9 +1,8 @@
-import * as notesApi from './note-api';
-import createNotes from './note-api';
+import * as noteApi from './note-api';
 
 export async function getNotes() {
     try {
-        const notes = await notesApi.noteCollection();
+        const notes = await noteApi.noteCollection();
         return notes;
     } catch (error) {
         console.error("Error fetching notes:", error);
@@ -11,9 +10,10 @@ export async function getNotes() {
     };
 };
 
-export async function addNotes(data) {
+export async function addNotes(data, user) {
     try {
-        const note_to_add = await createNotes(data);
+        console.log(user)
+        const note_to_add = await noteApi.createNotes(data, user);
         return note_to_add;
     } catch (error) {
         return error;

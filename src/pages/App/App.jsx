@@ -14,7 +14,7 @@ function App() {
        <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user} />} />
           </Routes>
       </>
     :

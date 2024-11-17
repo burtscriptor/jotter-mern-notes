@@ -1,4 +1,4 @@
-const note = require('../../models/note');
+const Note = require('../../models/note');
 
 
 const index = async (request, respond) => {
@@ -8,7 +8,13 @@ const index = async (request, respond) => {
 };
 
 const create = async (request, respond) => {
-    console.log('createNote reporting');
+    try {
+        console.log(request.body);
+        const note = Note.create(request.body);
+        respond.json("Save successful" );
+    } catch (error) {
+        respond.status(400).json(error);
+    }
 };
 
 const remove = async (request, respond) => {
