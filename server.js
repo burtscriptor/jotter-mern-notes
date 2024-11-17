@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const notesRouter =  require('./routes/api/notes.js')
 require('dotenv').config();
 
 require('./config/database');
@@ -16,10 +17,10 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Be sure to mount before routes
 app.use(require('./config/checkToken'));
 
-// app.use('/api/login', require('./routes/api/login'));
+
 app.use('/api/users', require('./routes/api/users'));
 
-
+app.use('/api/notes', require('./routes/api/notes'));
 
 
 app.get('/*', function (request, response) {

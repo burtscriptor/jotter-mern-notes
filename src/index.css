@@ -11,28 +11,8 @@
 
 *, *:before, *:after {
   box-sizing: border-box;
-}
+} 
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
-  padding: 2vmin;
-  height: 100vh;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-#root {
-  height: 100%;
-}
 
 .align-ctr {
   text-align: center;
@@ -79,9 +59,11 @@ code {
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--tan-1);
+  
+  /* background-color: var(--tan-1); */
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
+  margin-right: 3vmin;
 }
 
 p.error-message {
@@ -131,6 +113,12 @@ button, a.button {
   cursor: pointer;
 }
 
+.create-button {
+  margin-right: 6vmin;
+  margin-left: 3vmin;
+  background-color: var(--tan-2);
+}
+
 button.btn-sm {
   font-size: 1.5vmin;
   padding: .6vmin .8vmin;
@@ -149,4 +137,11 @@ button:disabled, form:invalid button[type="submit"] {
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+}
+
+.home-content {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

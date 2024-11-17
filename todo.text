@@ -1,0 +1,79 @@
+Progress
+- 9/11 - started frontend to backend creating notes got up to note-api
+- 11/11 got frontend to backend note services 
+
+Up to
+- note api - make sendrequest for notes??
+
+backend functionality 
+- create a new database by changing the name in 
+.env. Then confirm by login into mongodb
+- create schema for notes
+- modify routes
+- modify/ make controllers to send and receive 
+data between database and frontend
+- CRUD functionality will require diferent
+methods - get, post, delete
+
+frontend
+- login form - needs email address and password not name and password (venus@venus pw venus)
+- also need to ** or ## password when entered
+- set up basic forms for entering notes
+- set up get requests to backend
+- converge everyting on to one page
+
+    // we will use one piece of state for each user
+    // it will be like so
+    // userNotes, setUserNotes = 
+    // addNote = "string",
+    // noteCollection = ['array returned from backend, each is an object 
+    // that contains date of creation, unique ID, username?, then note (i imagine ths ishow 
+    // it will be?)] 
+    // noteEdit = {note="string"}
+    // how to delete = use index which will be connected to the unique number?
+    // probably the way to do it so just need a button that gets the index or unqiue
+    // number, this problem i think we will need to wait to encouter it because I 
+    // can't quiet remember how to do it.
+    
+  
+    
+// get notes
+// get request
+// import a function from api/services
+// so we will call that function here but not have
+// it defined here in the frontend
+// needs to include passing the req.body.user
+
+
+// create new note
+// will be a post request, need to include, user
+// I think mongo will add datetime automaticially
+// likewise we will have this in the api/sercies
+
+// delete note
+// i guess if all functionality is in the ap/services 
+// we might as well have the delete functiona there to 
+// keep things together and clear and we can ust call the function
+// here passing the info we need as an arguement
+
+// edit note
+// i guess if all functionality is in the ap/services 
+// we might as well have the delete functiona there to 
+// keep things together and clear and we can ust call the function
+// here passing the info we need as an arguement
+
+
+
+
+
+
+
+-file system
+remove homeorder componet
+remove new order compoent
+
+Other thougths
+- im thinking we should add image upload
+- would be an interesting challenge to try 
+- and complete
+- plus more aws experience

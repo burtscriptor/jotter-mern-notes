@@ -10,7 +10,7 @@ export async function signUp(userData) {
 };
 
 export async function logIn(logUser) {
-  console.log('user-service login triggerd')
+  // console.log('user-service login triggerd')
     const token =  await usersAPI.logIn(logUser);
 
 localStorage.setItem('token',token)
@@ -20,11 +20,10 @@ return getUser();
 
   export function logOut () {
     localStorage.removeItem('token');
-
-  }
+  };
 
   export function getToken() {
-    console.log('this is gettoken');
+    // console.log('this is gettoken');
     // getItem returns null if there's no string
     const token = localStorage.getItem('token');
     if (!token) return null;
@@ -40,15 +39,15 @@ return getUser();
   };
   
 const checkToken = async () => {
-    console.log("user-service checkToken triggered")
+    // console.log("user-service checkToken triggered")
     // Just so that you don't forget how to use .then
   return usersAPI.checkToken().then(dateStr => new Date(dateStr));
 }
 
   export function getUser() {
-    console.log('this is get user');
+    // console.log('this is get user');
     const token = getToken();
-    console.log('token from getuser', token)
+    // console.log('token from getuser', token)
     // If there's a token, return the user in the payload, otherwise return null
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
   };
