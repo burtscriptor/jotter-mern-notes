@@ -10,9 +10,11 @@ const HomePage = ({ user }) => {
     });
 
     useEffect(() => {
+        console.log("This is user", user._id)
         const getCollection = async () => {
             try {
-                const notes = await getNotes();
+                const userID = userNotes.user._id;
+                const notes = await getNotes(userID);
                 console.log('Fetched notes:', notes.data);
               
                 setUserNotes((prev) => ({...prev, noteCollection: notes.data  }))

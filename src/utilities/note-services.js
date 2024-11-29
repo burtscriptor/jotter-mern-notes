@@ -1,8 +1,8 @@
 import * as noteApi from './note-api';
 
-export async function getNotes() {
+export async function getNotes(userId) {
     try {
-        const notes = await noteApi.noteCollection();
+        const notes = await noteApi.noteCollection(userId);
         return notes;
     } catch (error) {
         console.error("Error fetching notes:", error);

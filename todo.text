@@ -1,15 +1,14 @@
 Progress
 - 9/11 - started frontend to backend creating notes got up to note-api
 - 11/11 got frontend to backend note services 
+- 17/11 saved notes to db with user as ref
 
 Up to
-- note api - make sendrequest for notes??
+when use logs in display their notes, which means searching the database for there username
+started setting this up by passing creator/ user to the backend, middleware not complete front and backend complete
 
 backend functionality 
-- create a new database by changing the name in 
-.env. Then confirm by login into mongodb
-- create schema for notes
-- modify routes
+
 - modify/ make controllers to send and receive 
 data between database and frontend
 - CRUD functionality will require diferent

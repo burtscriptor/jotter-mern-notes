@@ -2,14 +2,21 @@ const Note = require('../../models/note');
 
 
 const index = async (request, respond) => {
-    console.log("noteCollection reporting");
-    respond.json("noteCollection end point");
+    console.log("user", request.params.userId);
+   try {
+    const query =  { user: request.params.userId }
+    const notes = await Note.find(query);
+    console.log(notes);
+    respond.json(notes);
+   } catch (error) {
+    console.log(error);
+    respond.status(400).json(error);
+   }
    
 };
 
 const create = async (request, respond) => {
     try {
-        console.log(request.body);
         const note = Note.create(request.body);
         respond.json("Save successful" );
     } catch (error) {
@@ -31,3 +38,4 @@ module.exports = {
     remove,
     edit
 };
+

@@ -3,9 +3,10 @@ const BASE_URL = 'api/notes';
 import { noteSendRequest } from "./note-send-request";
 
 
-export async function noteCollection () {
+export async function noteCollection(userId) {
+   
     try {
-        const notes = await fetch(`${BASE_URL}/notes`);
+       const notes = await fetch(`${BASE_URL}/${userId}`);
        return {
             data: notes,
         };

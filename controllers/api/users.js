@@ -33,7 +33,7 @@ const create = async (request, respond) => {
       }
 
       const logIn = async (request, respond) => {
-        console.log("login endpoint")
+      
     
       try {
         const user = await User.findOne({ email: request.body.email });
