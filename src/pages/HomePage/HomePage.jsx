@@ -3,64 +3,53 @@ import { getNotes, addNotes } from '../../utilities/note-services';
 
 const HomePage = ({ user }) => {
     const [userNotes, setUserNotes] = useState({
-        user: user,
         addNote: "",
-        noteCollection: [],
-        edit: ""
+        existing_notes: [],
     });
 
-    useEffect(() => {
-        console.log("This is user", user._id)
-        const getCollection = async () => {
-            try {
-                const userID = userNotes.user._id;
-                const notes = await getNotes(userID);
-                console.log('Fetched notes:', notes.data);
-              
-                setUserNotes((prev) => ({...prev, noteCollection: notes.data  }))
-            } catch (error) {
-                console.error('Error fetching notes:', error);
-            }
-        };
-
-        getCollection();
-    }, []);
-
-    const handleChange = (event) => {
-        const note = event.target.value;
-        setUserNotes({ ...userNotes, addNote: note });
-    };
-
-    const handleSubmit = async (event) => {
+    const getCollection = async () => {
         try {
-            event.preventDefault();
-            const data = userNotes.addNote;
-            const creator = userNotes.user;
-            const add = await addNotes(data, creator );
-            console.log(add);
-            
-        }catch (error) {
-            console.log("HandleSubmit error");
+            const userID = user._id; // Access user directly from props
+            const notes = await getNotes(userID);
+            console.log('Fetched notes:', notes.data.data);
 
+            setUserNotes((prev) => ({ ...prev, existing_notes: notes.data.data }));
+        } catch (error) {
+            console.error('Error fetching notes:', error);
         }
     };
 
-    const displayNotes =  userNotes.noteCollection.length > 0 ? 
-        userNotes.noteCollection.map((note, index) => (
-            <div className="note" key={index}><p key={index}>{note}</p></div>
-        )) : (<p>no notes to display</p>);
+    useEffect(() => {
+        getCollection();
+    }, [user]); // Add `user` as a dependency to ensure it updates correctly
+
+    const handleChange = (event) => {
+        setUserNotes((prev) => ({ ...prev, addNote: event.target.value }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const data = userNotes.addNote;
+            await addNotes(data, user); // Use user directly from props
+            setUserNotes((prev) => ({ ...prev, addNote: "" })); // Reset the input field
+            getCollection(); // Refresh the notes
+        } catch (error) {
+            console.error("HandleSubmit error:", error);
+        }
+    };
 
     return (
         <main className="home-content">
             <div className="home-header">
-                <h1>Hey this is the home header</h1>
+                <h1>Hey, this is the home header</h1>
             </div>
             <div className="date-time">
                 <h2>Date coming soon</h2>
             </div>
 
             <div className="note-input-form">
-                <form autoComplete='off' onSubmit={handleSubmit}>
+                <form autoComplete="off" onSubmit={handleSubmit}>
                     <textarea
                         name="addNote"
                         value={userNotes.addNote}
@@ -74,7 +63,15 @@ const HomePage = ({ user }) => {
             </div>
 
             <div className="display-notes">
-               {displayNotes}
+                {userNotes.existing_notes.data.data.length > 0 ? (
+                    userNotes.existing_notes.map((note, index) => (
+                        <div className="note" key={index}>
+                            <p>{note}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No notes to display</p>
+                )}
             </div>
         </main>
     );

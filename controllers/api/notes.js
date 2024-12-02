@@ -2,15 +2,14 @@ const Note = require('../../models/note');
 
 
 const index = async (request, respond) => {
-    console.log("user", request.params.userId);
    try {
     const query =  { user: request.params.userId }
     const notes = await Note.find(query);
     console.log(notes);
-    respond.json(notes);
+    respond.status(200).json({ status: 'success', data: notes });
    } catch (error) {
     console.log(error);
-    respond.status(400).json(error);
+    respond.status(400).json({ status: 'error', message: 'Unable to fetch notes', error: error});
    }
    
 };

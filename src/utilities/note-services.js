@@ -5,7 +5,7 @@ export async function getNotes(userId) {
         const notes = await noteApi.noteCollection(userId);
         return notes;
     } catch (error) {
-        console.error("Error fetching notes:", error);
+        return error;
         
     };
 };

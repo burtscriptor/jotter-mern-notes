@@ -2,10 +2,15 @@ Progress
 - 9/11 - started frontend to backend creating notes got up to note-api
 - 11/11 got frontend to backend note services 
 - 17/11 saved notes to db with user as ref
+- 30/11 found user notes in DB - had to use request parameters to pass the userId to the backend
+- 2/12 have returned the data to the frontend but there is somethng wrong with the data structure that needs to be fixed
 
 Up to
-when use logs in display their notes, which means searching the database for there username
-started setting this up by passing creator/ user to the backend, middleware not complete front and backend complete
+Fix the data struture of the return data from the backend
+
+Improvements
+- validate userID when calling for note collection. - 2/12/2024
+
 
 backend functionality 
 
